@@ -1,0 +1,17 @@
+{
+  "name": "mongoose",
+  "version": "1.0.0",
+  "description": "Mongoosejs tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "Mongoose",
+    "start": "nodemon --inspect index.js"
+  },
+  "author": "Team x",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3",
+    "nodemon": "^2.0.7"
+  }
+}
