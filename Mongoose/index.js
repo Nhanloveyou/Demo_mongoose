@@ -28,12 +28,25 @@ connect.then((db) => {
         //In ra document vừa lưu
         console.log(nhan);
 
-        return Courses.find({}).exec();
+        return Courses.findByIdAndUpdate(nhan._id, {
+            $set: {description: "Updated courses"},
+        }, {
+                new: true
+        }).exec();
     })
-    .then((courses) => {
+    .then((course) => {
         //in ra tất cả document trong tài liệu
-        console.log(courses);
-        //Thực hiện xóa tất cả
+        console.log(course);
+
+        course.comments.push({
+            rating: 5,
+            comment: 'Khóa học rất bổ ích',
+            author: "Mr.Bean"
+        });
+        return course.save();
+    })
+    .then((course) => {
+        console.log(course);
         return Courses.deleteMany({});
     })
     .then(() => {

@@ -4,6 +4,26 @@ const mongoose = require('mongoose');
 // mongoose.plugin(slug);
 
 const Schema = mongoose.Schema;
+const commentSchema = new Schema({
+	rating:{
+		type: Number,
+		min: 1,
+		max: 5,
+		required: true
+	},
+	comment: {
+		type: String,
+		required: true
+	},
+	author: {
+		type: String,
+		required: true
+	}
+},{
+	timestamps: true
+}
+
+);
 
 const Course = new Schema({
     name: {
@@ -26,8 +46,10 @@ const Course = new Schema({
       maxLength: 255
     },
     image: {
-      type: String, maxLength: 255
+      type: String, 
+	  maxLength: 255
     },
+	comments: [commentSchema]
   },  {
     timestamps: true,
   });
