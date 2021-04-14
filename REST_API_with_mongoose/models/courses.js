@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+require('mongoose-currency').loadType(mongoose);
+const Currency = mongoose.Types.Currency;
 // slug = require('mongoose-slug-generator');
 
 // mongoose.plugin(slug);
@@ -48,6 +50,17 @@ const Course = new Schema({
     image: {
       type: String, 
 	  maxLength: 200
+    },
+    category:{
+      type: String,
+      required: true
+    },
+    label:{
+      type: String,
+      required: true
+    },
+    price:{
+      type: Currency
     },
 	comments: [commentSchema]
   },  {
